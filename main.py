@@ -1,11 +1,14 @@
 import os
+from time import sleep
 from pytube import *
 from moviepy.editor import *
 
 
 def convert_to_mp3(folder):
     """ Convert videos to mp3 """
+    print("[~] Let's convert all downloads folder mp4 files to mp3")
     downloads_folder = os.path.join(folder, "downloads")
+    sleep(1.5)
     for file in os.listdir(downloads_folder):
         if file.endswith(".mp4"):
             mp4_file_path = os.path.join(downloads_folder, file)
@@ -14,10 +17,10 @@ def convert_to_mp3(folder):
             video = VideoFileClip(mp4_file_path)
             video.audio.write_audiofile(mp3_file_path)
 
-            print(f"[+] {mp4_file_path} converted to {mp3_file_path}")
+            print(f"[+] {mp4_file_path[40:]} converted to {mp3_file_path[40:]}")
 
             os.remove(mp4_file_path)
-            print(f"[+] {mp4_file_path} removed")
+            print(f"[+] {mp4_file_path[40:]} removed")
 
 
 def main():

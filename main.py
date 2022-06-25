@@ -30,7 +30,7 @@ def main():
     first_result = str(yt_search.results[0])
     id_video = first_result[41:52]
 
-    url_video = f"https://www.youtube.com/watch?v={id_video}"
+    url_video = f"https://youtu.be/{id_video}"
 
     yt_video = YouTube(url_video)
     print(f"[+] {yt_video.title} found!")

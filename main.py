@@ -22,7 +22,9 @@ def convert_to_mp3(folder):
 
 def main():
     """ Search the video by name and take the first_result, then create the url_video """
-    yt_search = Search("Everybody Mac Miller")
+    song = input("Enter the song name: ")
+
+    yt_search = Search(song)
     print("[+] Searching...")
 
     first_result = str(yt_search.results[0])

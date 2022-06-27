@@ -4,27 +4,35 @@ from pytube import *
 from moviepy.editor import *
 
 
-def convert_to_mp3(folder):
-    """ Convert videos to mp3 """
-    print("[~] Let's convert all downloads folder mp4 files to mp3")
-    downloads_folder = os.path.join(folder, "downloads")
-    sleep(1.5)
-    for file in os.listdir(downloads_folder):
-        if file.endswith(".mp4"):
-            mp4_file_path = os.path.join(downloads_folder, file)
-            mp3_file_path = os.path.join(downloads_folder, file[:-4] + ".mp3")
+def convert_downloads_to_mp3(folder):
+    def decorator(function):
+        def wrapper():
+            function()
 
-            video = VideoFileClip(mp4_file_path)
-            video.audio.write_audiofile(mp3_file_path)
+            print("[~] Let's convert all downloads folder mp4 files to mp3")
+            downloads_folder = os.path.join(folder, "downloads")
+            sleep(1)
+            for file in os.listdir(downloads_folder):
+                if file.endswith(".mp4"):
+                    mp4_file_path = os.path.join(downloads_folder, file)
+                    mp3_file_path = os.path.join(
+                        downloads_folder, file[:-4] + ".mp3")
 
-            print(f"[+] {mp4_file_path[40:]} converted to {mp3_file_path[40:]}")
+                    video = VideoFileClip(mp4_file_path)
+                    video.audio.write_audiofile(mp3_file_path)
 
-            os.remove(mp4_file_path)
-            print(f"[+] {mp4_file_path[40:]} removed")
+                    print(
+                        f"[+] {mp4_file_path[40:]} converted to {mp3_file_path[40:]}")
+
+                    os.remove(mp4_file_path)
+                    print(f"[+] {mp4_file_path[40:]} removed")
+        return wrapper
+    return decorator
 
 
+@convert_downloads_to_mp3("/home/erick/workspace/youtube")
 def main():
-    """ Search the video by name and take the first_result, then create the url_video """
+    """ Search the video by name and take the first_result then download it """
     song = input("Enter the song name: ")
 
     if song:
@@ -55,4 +63,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    # convert_to_mp3("/home/erick/workspace/youtube")

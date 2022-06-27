@@ -5,6 +5,7 @@ from moviepy.editor import *
 
 
 def convert_downloads_to_mp3(folder):
+    """ Decorator to convert mp4 downloaded files to mp3 """
     def decorator(function):
         def wrapper():
             function()
@@ -49,7 +50,7 @@ def main():
             print(f"[+] {yt_video.title} found!")
 
             # Dowload the video
-            # print(yt_video.streams.filter(file_extension='mp4'))
+            print(f"[+] {yt_video.title} is going to be downloaded")
             seted_video = yt_video.streams.get_by_itag(18)
             seted_video.download("/home/erick/workspace/youtube/downloads")
             print(f"[+] {yt_video.title} Downloaded!")

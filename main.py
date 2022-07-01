@@ -1,30 +1,37 @@
 import os
 from modules.download_music import download_by_name
-from modules.converter import convert_downloads_to_mp3
+from modules.converter import convert_mp4_to_mp3
 
 
-downloads_folder = os.path.join(os.getcwd(), "downloads")
+root = os.getcwd()
+path_downloads = os.path.join(root, "downloads")
+tracklist_file = os.path.join(root, "tracklist.txt")
 
 try:
-    os.mkdir(downloads_folder)
-
+    os.mkdir(path_downloads)
 except FileExistsError:
     pass
 
 
-@convert_downloads_to_mp3(content=downloads_folder)
-def main(**kwargs):
-    """ Search the video by name or tracklist and take the first_result then download it """
-    downloads = kwargs["folderForDownloads"]
+@convert_mp4_to_mp3(path_downloads)
+def main(folder_for_downloads):
+    while True:
+        input_option = input(
+            "Download: [a] by name, [b] by tracklist, [q] to quit: ")
 
-    input_option = int(input("Download: [a] by name, [b] by tracklist: "))
+        if input_option == "a":
+            download_by_name(folder_for_downloads)
 
-    if input_option == "a":
-        download_by_name(downloads)
+        elif input_option == "b":
+            pass
 
-    else:
-        print("Not implemented yet")
+        elif input_option == "q":
+            print("[~] Exiting...")
+            break
+
+        else:
+            print("Invalid option")
 
 
 if __name__ == "__main__":
-    main(folderForDownloads=downloads_folder)
+    main(path_downloads)

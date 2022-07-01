@@ -36,9 +36,10 @@ def download_by_name(folder):
         print("[-] You must enter a song name")
 
 
-# def download_by_tracklist(path_tracklist_file):
-    # """ Download by tracklist """
-    # with open(path_tracklist_file, "r") as file:
-        # tracklist = file.readlines()
+def download_by_tracklist(path_tracklist_file, folder):
+    """ Download by tracklist """
+    with open(path_tracklist_file, "r") as file:
+        tracklist = file.readlines()
 
-    # for track in tracklist:
+    for track in tracklist:
+        download(track, folder)

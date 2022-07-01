@@ -8,6 +8,7 @@ root = os.getcwd()
 path_downloads = os.path.join(root, "downloads")
 tracklist_file = os.path.join(root, "list.txt")
 
+# Create directory for downloads and tracklist file
 try:
     os.mkdir(path_downloads)
     open(tracklist_file, "x")
@@ -34,6 +35,8 @@ def main(folder_for_downloads):
 
         else:
             print("Invalid option")
+
+    print("[*] ALL FILES WILL BE CONVERTED UNTIL PROGRAM FINISH")
 
 
 if __name__ == "__main__":

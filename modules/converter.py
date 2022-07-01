@@ -1,6 +1,5 @@
 """ Converter module """
 import os
-from time import sleep
 from moviepy.editor import *
 
 
@@ -13,7 +12,6 @@ def convert_mp4_to_mp3(downloaded_content):
             list_files = os.listdir(downloaded_content)
             if list_files:
                 print("[~] Let's convert all downloads folder mp4 files to mp3")
-                sleep(1.5)
                 for file in list_files:
                     if file.endswith(".mp4"):
                         mp4_file_path = os.path.join(downloaded_content, file)

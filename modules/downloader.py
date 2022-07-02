@@ -27,13 +27,13 @@ def download(song_name, folder):
 
 def download_by_name(folder):
     """ Download song by name """
-    song_input = input("Enter the song name: ")
+    song_input = input("[+] Enter the song name: ")
 
     if song_input:
         download(song_input, folder)
 
     else:
-        print("[-] You must enter a song name")
+        print("[!] You must enter a song name")
 
 
 def download_by_tracklist(path_tracklist_file, folder):
@@ -41,5 +41,9 @@ def download_by_tracklist(path_tracklist_file, folder):
     with open(path_tracklist_file, "r") as file:
         tracklist = file.readlines()
 
-    for track in tracklist:
-        download(track, folder)
+    if tracklist:
+        for track in tracklist:
+            download(track, folder)
+
+    elif not tracklist:
+        print("[-] Tracklist is empty")

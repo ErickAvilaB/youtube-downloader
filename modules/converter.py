@@ -14,10 +14,10 @@ def convert_mp4_to_mp3(downloaded_content):
 
             if mp4_list_files:
                 print("[+] Let's convert all downloads folder mp4 files to mp3")
-                for file in mp4_list_files:
-                    mp4_file_path = os.path.join(downloaded_content, file)
+                for element in mp4_list_files:
+                    mp4_file_path = os.path.join(downloaded_content, element)
                     mp3_file_path = os.path.join(
-                        downloaded_content, file[:-4] + ".mp3")
+                        downloaded_content, element[:-4] + ".mp3")
 
                     video = VideoFileClip(mp4_file_path)
                     video.audio.write_audiofile(mp3_file_path)

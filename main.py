@@ -33,7 +33,7 @@ def main(folder_for_downloads, file):
     # Execute pregram always until user quits
     while True:
         input_option = input(
-            "[+] Download: [a] by name, [b] by tracklist, [q] to quit: ")
+            "[+] Download: [a] by name, [b] by tracklist, [q] quit and convert downloads: ")
 
         # Input handler. Execute a specific function according to input
         if input_option == "a":

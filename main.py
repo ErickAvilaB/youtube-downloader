@@ -22,6 +22,13 @@ except FileExistsError:
 @convert_mp4_to_mp3(path_downloads)
 def main(folder_for_downloads, file):
     """ Main function. """
+    print("""
+ ______     ______     ______     ______   ______   __  __    
+/\  ___\   /\  == \   /\  __ \   /\  == \ /\  == \ /\ \_\ \   
+\ \ \____  \ \  __<   \ \  __ \  \ \  _-/ \ \  _-/ \ \____ \  
+ \ \_____\  \ \_\ \_\  \ \_\ \_\  \ \_\    \ \_\    \/\_____\ 
+  \/_____/   \/_/ /_/   \/_/\/_/   \/_/     \/_/     \/_____/ 
+          """)
 
     # Execute pregram always until user quits
     while True:
@@ -49,6 +56,7 @@ def main(folder_for_downloads, file):
             print("[-] Invalid option")
 
     print("[!] ALL FILES WILL BE CONVERTED UNTIL MAIN FINISH")
+    print("[                   ---  (づ｡◕‿‿◕｡)づ  ---                  ]")
 
 
 if __name__ == "__main__":

@@ -24,6 +24,8 @@ def download(song_name, folder):
     except Exception as error:
         print(f"[-] Has been an error: {error}")
 
+    print("[    -----    ]")
+
 
 def download_by_name(folder):
     """ Download song by name """

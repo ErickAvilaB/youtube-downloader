@@ -5,7 +5,7 @@ from modules.downloader import download_by_name, download_by_tracklist, download
 from modules.converter import convert_mp4_to_mp3
 
 
-# getcwd get the current working directory, is used create the full path of necessary files
+# getcwd get the current working directory then create the full path of necessary files
 root = os.getcwd()
 path_downloads = os.path.join(root, "downloads")
 tracklist_file = os.path.join(root, "list.txt")
@@ -50,7 +50,7 @@ def main(folder_for_downloads, file):
             print("[+] Exiting...")
             break
 
-        # If input is empty shows message and ask again
+        # If input is empty shows message
         elif not input_option:
             print("[!] Please enter an option.")
             continue
@@ -59,6 +59,7 @@ def main(folder_for_downloads, file):
             print("[-] Invalid option")
 
     print("[!] ALL FILES WILL BE CONVERTED UNTIL MAIN FINISH")
+    # Show bar to separate the main from the convertion
     print("[                   ---  (づ｡◕‿‿◕｡)づ  ---                  ]")
 
 

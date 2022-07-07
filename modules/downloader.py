@@ -17,8 +17,8 @@ def download(song_name, folder):
         print(f"[+] {yt_video.title} found and will be downloaded")
 
         # Dowload the video
-        seted_video = yt_video.streams.get_by_itag(18)
-        seted_video.download(folder)
+        stream = yt_video.streams.get_by_itag(140)
+        stream.download(folder)
         print(f"[+] {yt_video.title} Downloaded!")
 
     except Exception as error:

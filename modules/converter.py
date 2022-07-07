@@ -1,6 +1,5 @@
 """ Converter module """
 import os
-from moviepy.editor import *
 
 
 def convert_mp4_to_mp3(downloaded_content):
@@ -19,14 +18,10 @@ def convert_mp4_to_mp3(downloaded_content):
                     mp3_file_path = os.path.join(
                         downloaded_content, element[:-4] + ".mp3")
 
-                    video = VideoFileClip(mp4_file_path)
-                    video.audio.write_audiofile(mp3_file_path)
+                    os.rename(mp4_file_path, mp3_file_path)
 
                     print(
                         f"[+] {mp4_file_path[40:]} converted to {mp3_file_path[40:]}")
-
-                    os.remove(mp4_file_path)
-                    print(f"[+] {mp4_file_path[40:]} removed")
                     print("[    -----    ]")
             else:
                 print("[!] No mp4 files to convert")

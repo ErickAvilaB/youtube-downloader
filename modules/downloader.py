@@ -29,46 +29,54 @@ def download(song_name, folder):
         print("[    -----    ]")
 
 
-def download_by_url(url, folder):
+def download_by_url(folder):
     """ Download by url """
-    song_input = input(
-        "[+] Enter the url with format (youtu.be/) or (youtube.com/watch?v=): ")
+    while True:
+        song_input = input(
+            "[+] Enter the url with format (youtu.be/) or (youtube.com/watch?v=). (q) to back: ")
 
-    validate = re.search("https://youtu.be/", song_input)
-    validate_2 = re.search("https://www.youtube.com/watch?", song_input)
+        validate = re.search("https://youtu.be/", song_input)
+        validate_2 = re.search("https://www.youtube.com/watch?", song_input)
 
-    if not song_input:
-        print("[!] You must enter a url")
+        if not song_input:
+            print("[!] You must enter a url")
 
-    elif (validate is None) and (validate_2 is None):
-        print("[!] Invalid url")
+        elif song_input == "q":
+            break
 
-    elif (validate is not None) or (validate_2 is not None):
-        try:
-            yt_video = YouTube(url)
-            print(f"[+] {yt_video.title} found and will be downloaded")
+        elif (validate is None) and (validate_2 is None):
+            print("[!] Invalid url")
 
-            # Dowload the video
-            stream = yt_video.streams.get_by_itag(140)
-            stream.download(folder)
-            print(f"[+] {yt_video.title} Downloaded!")
+        elif (validate is not None) or (validate_2 is not None):
+            try:
+                yt_video = YouTube(song_input)
+                print(f"[+] {yt_video.title} found and will be downloaded")
 
-        except Exception as error:
-            print(f"[-] Has been an error: {error}")
+                # Dowload the video
+                stream = yt_video.streams.get_by_itag(140)
+                stream.download(folder)
+                print(f"[+] {yt_video.title} Downloaded!")
 
-        finally:
-            print("[    -----    ]")
+            except Exception as error:
+                print(f"[-] Has been an error: {error}")
+
+            finally:
+                print("[    -----    ]")
 
 
 def download_by_name(folder):
     """ Download song by name """
-    song_input = input("[+] Enter the song name: ")
+    while True:
+        song_input = input("[+] Enter the song name. (q) to back: ")
 
-    if song_input:
-        download(song_input, folder)
+        if not song_input:
+            print("[!] You must enter a song name")
 
-    else:
-        print("[!] You must enter a song name")
+        elif song_input == "q":
+            break
+
+        else:
+            download(song_input, folder)
 
 
 def download_by_tracklist(path_tracklist_file, folder):

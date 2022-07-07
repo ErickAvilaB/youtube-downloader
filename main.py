@@ -1,7 +1,7 @@
 """ Script to download music """
 
 import os
-from modules.downloader import download_by_name, download_by_tracklist
+from modules.downloader import download_by_name, download_by_tracklist, download_by_url
 from modules.converter import convert_mp4_to_mp3
 
 
@@ -13,7 +13,7 @@ tracklist_file = os.path.join(root, "list.txt")
 # Create directory for downloads and tracklist file
 try:
     os.mkdir(path_downloads)
-    open(tracklist_file, "x")
+    open(tracklist_file, "x", encoding="utf-8")
 except FileExistsError:
     pass
 
@@ -33,13 +33,16 @@ def main(folder_for_downloads, file):
     # Execute pregram always until user quits
     while True:
         input_option = input(
-            "[+] Download: [a] by name, [b] by tracklist, [q] quit and convert downloads: ")
+            "[+] Download by: [a] name, [b] url, [c] tracklist, [q] quit and convert: ")
 
         # Input handler. Execute a specific function according to input
         if input_option == "a":
             download_by_name(folder_for_downloads)
 
         elif input_option == "b":
+            download_by_url(folder_for_downloads)
+
+        elif input_option == "c":
             download_by_tracklist(file, folder_for_downloads)
 
         # Break the infinite loop if the input is q

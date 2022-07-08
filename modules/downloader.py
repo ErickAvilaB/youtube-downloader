@@ -32,7 +32,8 @@ def download(song_name, folder):
 
     # Print a separator
     finally:
-        print("[    -----    ]")
+        print("""[    -----    ]
+              """)
 
 
 def download_by_url(folder):
@@ -74,7 +75,8 @@ def download_by_url(folder):
                 print(f"[-] Has been an error: {error}")
 
             finally:
-                print("[    -----    ]")
+                print("""[    -----    ]
+                      """)
 
 
 def download_by_name(folder):

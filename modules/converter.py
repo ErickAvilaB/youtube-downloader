@@ -29,7 +29,8 @@ def convert_mp4_to_mp3(downloaded_content):
                     print(
                         f"[+] {mp4_file_path[40:]} converted to {mp3_file_path[40:]}")
                     # Show bar to separate each element
-                    print("[    -----    ]")
+                    print("""[    -----    ]
+                          """)
             else:
                 print("[!] No mp4 files to convert")
 

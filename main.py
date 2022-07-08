@@ -60,7 +60,8 @@ def main(folder_for_downloads, file):
 
     print("[!] ALL FILES WILL BE CONVERTED UNTIL MAIN FINISH")
     # Show bar to separate the main from the convertion
-    print("[                   ---  (づ｡◕‿‿◕｡)づ  ---                  ]")
+    print("""[                   ---  (づ｡◕‿‿◕｡)づ  ---                  ]
+          """)
 
 
 if __name__ == "__main__":
